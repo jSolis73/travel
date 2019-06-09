@@ -1,31 +1,23 @@
 <template>
 	<div>
-		<header>
-			<div class="header">
-				<img src="../assets/logo.png" alt="Travel" class="logo">
-				<p class="headMessage">Друзья, мои походы пока еще <br> не закончились, делюсь с вами!</p>
-				<button class="btn1">
-					Событие +
-				</button>
-				<button class="btn2">
-					Обновить
-				</button>
-			</div>
-		</header>
-
+		<header-app />
 		<section>
+			<div class="content">
 
+			</div>	
 		</section>
 
 		<footer>
-
 		</footer>
 	</div>
 </template>
 
 <script>
+import HeaderApp from './headerApp'
 export default {
-	
+	components: {
+		HeaderApp
+	}
 }
 </script>
 
@@ -64,9 +56,21 @@ export default {
 	height: 52px;
 	background: transparent;
 	border-radius: 5px;
-	border: 2px solid #a9d85f;
+	border: 3px solid #a9d85f;
 	font-size: 16pt;
 	color:#ffffff;
 	margin-left: 32px;
 	}
+
+	footer {
+		background: url(../assets/footer.png) no-repeat center top ;
+		height: 74px;
+		width: 100%;
+		position: absolute;
+  	left: 0;
+  	bottom: 0;
+	}
+	.content {
+  	padding-bottom: 80px;
+	}	
 </style>
