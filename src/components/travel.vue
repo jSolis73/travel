@@ -52,14 +52,14 @@ export default {
 		margin-left: 228px;
 	}
 	.btn2 {
-	width: 165px;
-	height: 52px;
-	background: transparent;
-	border-radius: 5px;
-	border: 3px solid #a9d85f;
-	font-size: 16pt;
-	color:#ffffff;
-	margin-left: 32px;
+		width: 165px;
+		height: 52px;
+		background: transparent;
+		border-radius: 5px;
+		border: 3px solid #a9d85f;
+		font-size: 16pt;
+		color:#ffffff;
+		margin-left: 32px;
 	}
 
 	footer {
