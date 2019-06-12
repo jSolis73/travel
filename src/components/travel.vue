@@ -2,8 +2,8 @@
 	<div>
 		<header-app />
 		<section>
-			<div class="content">
-
+			<div class="content" v-for="(post, id) in posts" :key="id">
+				<h3>{{post.message}}</h3>
 			</div>	
 		</section>
 
@@ -14,16 +14,26 @@
 
 <script>
 import HeaderApp from './headerApp'
+
+import {fb, db} from '../main'
 export default {
+	data() {
+		return {
+			posts: []
+		}
+	},
 	components: {
 		HeaderApp
-	}
+	},
+	mounted() {
+		db.collection('posts')
+  }
 }
 </script>
 
 <style>
 	body {
-		margin: 0;
+		margin: 0 auto;
 		padding:0;
 	}
 	.header {
@@ -61,7 +71,26 @@ export default {
 		color:#ffffff;
 		margin-left: 32px;
 	}
-
+	.btn3 {
+		width: 100px;
+		height: 40px;
+		background: transparent;
+		border-radius: 5px;
+		border: 3px solid #a9d85f;
+		font-size: 13pt;
+		color:#a3a3a3;
+		margin-left: 32px;
+	}
+	.btn4 {
+		width: 100px;
+		height: 40px;
+		background-color: #a9d85f;
+		border-radius: 5px;
+		border: none;
+		font-size: 13pt;
+		color:#ffffff;
+		margin-left: 228px;
+	}
 	footer {
 		background: url(../assets/footer.png) no-repeat center top ;
 		height: 74px;

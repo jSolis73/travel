@@ -5,14 +5,17 @@
 </template>
 
 <script>
-import Travel from './components/travel'
+import travel from './components/travel'
+
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    Travel
+    travel
+  },
+  data () {
+    return {
+      //
+    }
   }
 }
 </script>
-
-<style>
-</style>
