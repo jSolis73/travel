@@ -48,11 +48,10 @@
 				label="Описание"
 				height="160"
 			></v-textarea>									
-			<v-layout>
+			<v-layout >
 				<v-checkbox
 					v-model="checkbox"
 					label="Пометить событие как важное"
-					mr1
 				></v-checkbox>
 
 				<button class="btn4"> Готово</button>
@@ -78,8 +77,14 @@ export default {
 	},
 	computed: {
 		realTime() {
+			function addZero(i) {
+				if (i < 10) {
+					i = '0' + i
+				}
+				return i
+			}
 			let now = new Date();
-			let result = now.getHours() + ":" + now.getMinutes();
+			let result = addZero(now.getHours()) + ":" + addZero(now.getMinutes());
 			return result	
 		}
 	}
