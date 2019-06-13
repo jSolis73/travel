@@ -3,7 +3,12 @@
 		<header-app />
 		<section>
 			<div class="content" v-for="(post, id) in posts" :key="id">
-				<h3>{{post.message}}</h3>
+				<div class="displayPosts">
+						<!-- <v-flex xs12 offset-xs12> -->
+							<v-icon class ="icon">close</v-icon>
+						<!-- </v-flex> -->
+					<h3>{{post.message}}</h3>
+				</div>
 			</div>	
 		</section>
 
@@ -116,5 +121,22 @@ export default {
 	}
 	.content {
   	padding-bottom: 80px;
+		width: 1260px;
+		padding-left: 227px;
+		
 	}	
+	.displayPosts {
+		background-color: #ffffff;
+	}
+	section {
+		background-color: #cecece;
+		
+	}
+	.icon {
+		cursor: default;
+		color: black;
+		background: white;
+		margin-left: 1000px;
+		margin-top: 5px
+	}
 </style>

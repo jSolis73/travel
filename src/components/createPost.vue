@@ -82,7 +82,7 @@ export default {
 			db.collection("posts").add(this.post)
 			.then((docRef) => {
 					console.log("Document written with ID: ", docRef.id);
-					this.reset
+					// this.reset
 			})
 			.catch(function(error) {
 					console.error("Error adding document: ", error);
