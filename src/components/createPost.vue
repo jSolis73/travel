@@ -18,7 +18,7 @@
 				</v-btn>
 			</v-flex>
 			<v-text-field
-				v-model="eventName"
+				v-model="post.title"
 				label="Событие"
 			></v-text-field>
 			<v-layout
@@ -29,7 +29,7 @@
 					xs12
 					md8>
 					<v-text-field
-						v-model="place"
+						v-model="post.place"
 						label="Место"
 					>
 					</v-text-field>
@@ -38,23 +38,23 @@
 					xs12
 					md3>
 					<v-text-field
-						v-model="realTime"
+						v-model="post.realTime"
 						label="Время"
 					></v-text-field>
 				</v-flex>
 			</v-layout>
 			<v-textarea
-				v-model="description"
+				v-model="post.message"
 				label="Описание"
 				height="160"
 			></v-textarea>									
 			<v-layout >
 				<v-checkbox
-					v-model="checkbox"
+					v-model="post.checkbox"
 					label="Пометить событие как важное"
 				></v-checkbox>
 
-				<button class="btn4"> Готово</button>
+				<button class="btn4" @click.prevent="addData"> Готово</button>
 				<button class="btn3">Удалить</button>
 			</v-layout>
 		</v-form>
@@ -62,30 +62,32 @@
 </template>
 
 <script>
-
+import {db,fb} from '../main'
 export default {
 	data() {
 		return {
 			modal: false,
-			eventName: '',
-			place: '',
-			time: new Date(),
-			description: '',
-			checkbox: false
+			post: {
+				message: '',
+				checkbox: false,	
+				title: '',
+				place: '',
+				realTime: ''	
+			}
 		}
 		
 	},
-	computed: {
-		realTime() {
-			function addZero(i) {
-				if (i < 10) {
-					i = '0' + i
-				}
-				return i
-			}
-			let now = new Date();
-			let result = addZero(now.getHours()) + ":" + addZero(now.getMinutes());
-			return result	
+	methods: {
+		addData() {
+			db.collection("posts").add(this.post)
+			.then((docRef) => {
+					console.log("Document written with ID: ", docRef.id);
+					this.reset
+			})
+			.catch(function(error) {
+					console.error("Error adding document: ", error);
+			});
+			this.modal = false
 		}
 	}
 }

@@ -25,8 +25,23 @@ export default {
 	components: {
 		HeaderApp
 	},
-	mounted() {
-		db.collection('posts')
+	methods: {
+		readData() {
+		db.collection("posts")
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            this.posts.unshift(doc.data());
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });			
+		}
+	},
+	created() {
+		this.readData()
   }
 }
 </script>
@@ -95,7 +110,7 @@ export default {
 		background: url(../assets/footer.png) no-repeat center top ;
 		height: 74px;
 		width: 100%;
-		position: absolute;
+		/* position: absolute; */
   	left: 0;
   	bottom: 0;
 	}
