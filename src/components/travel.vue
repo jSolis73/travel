@@ -4,10 +4,15 @@
 		<section>
 			<div class="content" v-for="(post, id) in posts" :key="id">
 				<div class="displayPosts">
-						<!-- <v-flex xs12 offset-xs12> -->
-							<v-icon class ="icon">close</v-icon>
-						<!-- </v-flex> -->
-					<h3>{{post.message}}</h3>
+						<v-icon class ="icon">close</v-icon>
+					<div class="wrapper">
+						<div class="realTime">{{post.realTime}}</div>
+						<div class="title">{{post.title}}</div> 
+					</div>
+					<div class="wrapper">
+						<div class="place">{{post.place}}</div>
+						<div class="message">{{post.message}}</div>
+					</div>
 				</div>
 			</div>	
 		</section>
@@ -52,91 +57,5 @@ export default {
 </script>
 
 <style>
-	body {
-		margin: 0 auto;
-		padding:0;
-	}
-	.header {
-		background: url(../assets/head.png) no-repeat center top ;
-		height: 302px;
-		
-	}
-	.logo {
-		padding-left: 228px;
-		padding-top: 48px;
-	}
-	.headMessage {
-		font-size: 40px;
-		color: #ffffff;
-		padding-left: 720px;
-		margin-top: 0px;
-	}
-	.btn1 {
-		width: 165px;
-		height: 52px;
-		background-color: #a9d85f;
-		border-radius: 5px;
-		border: none;
-		font-size: 16pt;
-		color:#ffffff;
-		margin-left: 228px;
-	}
-	.btn2 {
-		width: 165px;
-		height: 52px;
-		background: transparent;
-		border-radius: 5px;
-		border: 3px solid #a9d85f;
-		font-size: 16pt;
-		color:#ffffff;
-		margin-left: 32px;
-	}
-	.btn3 {
-		width: 100px;
-		height: 40px;
-		background: transparent;
-		border-radius: 5px;
-		border: 3px solid #a9d85f;
-		font-size: 13pt;
-		color:#a3a3a3;
-		margin-left: 32px;
-	}
-	.btn4 {
-		width: 100px;
-		height: 40px;
-		background-color: #a9d85f;
-		border-radius: 5px;
-		border: none;
-		font-size: 13pt;
-		color:#ffffff;
-		margin-left: 228px;
-	}
-	footer {
-		background: url(../assets/footer.png) no-repeat center top ;
-		height: 74px;
-		width: 100%;
-		/* position: absolute; */
-  	left: 0;
-  	bottom: 0;
-	}
-	.content {
-  	padding-bottom: 80px;
-		width: 1260px;
-		padding-left: 227px;
-		
-	}	
-	.displayPosts {
-		background-color: #ffffff;
-	}
-	section {
-		background-color: #cecece;
-		
-	}
-	.icon {
-		cursor: default;
-		color: black;
-		background: white;
-		margin-left: 1000px;
-		margin-top: 5px
-	}
+	 @import '../assets/style.css';
 </style>
