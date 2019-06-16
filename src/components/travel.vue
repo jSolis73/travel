@@ -4,7 +4,11 @@
 		<section>
 			<div class="content" v-for="(post, id) in posts" :key="id">
 				<div class="displayPosts" >
-						<v-icon class ="icon" @click="deletePost(post.id)">close</v-icon>
+						<v-layout >
+							
+							<v-icon class ="icon1" @click="deletePost(post.id)">close</v-icon>
+							<v-icon class ="icon2" @click="showEditPost">edit</v-icon>
+						</v-layout>
 					<div class="wrapper">
 						<div class="realTime">{{post.data().realTime}}</div>
 						<div class="title">{{post.data().title}}</div> 
@@ -16,7 +20,7 @@
 				</div>
 			</div>	
 		</section>
-
+		<edit-post/>
 		<footer>
 		</footer>
 	</div>
@@ -24,16 +28,20 @@
 
 <script>
 import HeaderApp from './headerApp'
-
+import EditPost from './editPost'
 import {fb, db} from '../main'
+import {eventBus} from '../main'
 export default {
+	props: ['modal'],
 	data() {
 		return {
 			posts: []
 		}
 	},
 	components: {
-		HeaderApp
+		HeaderApp,
+		EditPost
+	
 	},
 	methods: {
 		readData() {
@@ -61,6 +69,9 @@ export default {
 			else {
 
 			}	
+		},
+		showEditPost() {
+			eventBus.$emit('editPost')
 		}
 	},
 	created() {

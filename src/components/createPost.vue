@@ -55,7 +55,9 @@
 				></v-checkbox>
 
 				<button class="btn4" @click.prevent="addData"> Готово</button>
-				<button class="btn3">Удалить</button>
+				<button 
+					class="btn3"
+					@click.prevent="modal=false">Отмена</button>
 			</v-layout>
 		</v-form>
 	</v-dialog>

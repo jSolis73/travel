@@ -6,10 +6,9 @@ import 'firebase/firestore'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-
-
 Vue.use(Vuetify)
 
+export const eventBus = new Vue()
 
 const config = {  
   apiKey: "AIzaSyBWJLoTG16TYZ0H-vXpMIMgamJ-HNW6Fbg",

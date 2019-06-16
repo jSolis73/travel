@@ -81,12 +81,13 @@ section {
 	background-color: #cecece;
 	
 }
-.icon {
+.icon1 {
 	cursor: default;
 	color: black;
 	background: white;
-	margin-left: 1000px;
-	margin-top: 5px
+	margin-left: 970px;
+	margin-top: 5px;
+	margin-right: 5px;
 }
 div.wrapper {
 	width: 1140px;
