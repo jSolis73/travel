@@ -3,7 +3,7 @@
 		<header-app />
 		<section>
 			<div class="content" v-for="(post, id) in posts" :key="id">
-				<div class="displayPosts" >
+				<div class="displayPosts" :class="{'displayPosts2': post.data().checkbox}" >
 						<v-layout >
 							
 							<v-icon class ="icon1" @click="deletePost(post.id)">close</v-icon>
@@ -32,7 +32,6 @@ import EditPost from './editPost'
 import {fb, db} from '../main'
 import {eventBus} from '../main'
 export default {
-	props: ['modal'],
 	data() {
 		return {
 			posts: []
@@ -72,11 +71,14 @@ export default {
 		},
 		showEditPost() {
 			eventBus.$emit('editPost')
+		},
+		changePost() {
+			eventBus.$emmit('changePost');
 		}
 	},
 	created() {
-		this.readData()
-  }
+		this.readData();
+	}
 }
 </script>
 

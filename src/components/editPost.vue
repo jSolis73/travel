@@ -51,7 +51,7 @@
 					label="Пометить событие как важное"
 				></v-checkbox>
 
-				<button class="btn4" @click.prevent="addData"> Готово</button>
+				<button class="btn4" @click.prevent="changePost(post)"> Сохранить</button>
 				<button 
 					class="btn3"
 					@click.prevent="modal=false">Отмена</button>
@@ -77,8 +77,9 @@ export default {
 		}		
 	},
 	created() {
-		eventBus.$on('editPost', () => this.modal=true)
-	}
+		eventBus.$on('editPost', () => this.modal=true);
+		eventBus.$on('changePost', (post) => this.post = post.data())
+	},
 }
 </script>
 

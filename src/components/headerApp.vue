@@ -8,7 +8,7 @@
 				<!-- <button class="btn1">
 					Событие +
 				</button> -->
-				<button class="btn2">
+				<button class="btn2" @click="reload">
 					Обновить
 				</button>
 			</div>
@@ -22,6 +22,11 @@ import createPost from './createPost'
 export default {
 	components: {
 		createPost
+	},
+	methods: {
+		reload() {
+			window.location.reload();
+		}
 	}
 }
 </script>
