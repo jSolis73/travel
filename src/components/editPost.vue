@@ -77,9 +77,11 @@ export default {
 		}		
 	},
 	created() {
-		eventBus.$on('editPost', () => this.modal=true);
-		eventBus.$on('changePost', (post) => this.post = post.data())
+		eventBus.$on('editPost', () => {
+			this.modal=true;
+		})
 	},
+
 }
 </script>
 

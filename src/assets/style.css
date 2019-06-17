@@ -128,3 +128,7 @@ div.message {
 	display: table-cell;
 	margin-top: 25px
 }
+.main {
+	margin:0 auto;
+	width: 1920px
+}

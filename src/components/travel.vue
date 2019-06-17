@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="main">
 		<header-app />
 		<section>
 			<div class="content" v-for="(post, id) in posts" :key="id">
@@ -7,7 +7,7 @@
 						<v-layout >
 							
 							<v-icon class ="icon1" @click="deletePost(post.id)">close</v-icon>
-							<v-icon class ="icon2" @click="showEditPost">edit</v-icon>
+							<v-icon class ="icon2" @click="showEditPost(post)">edit</v-icon>
 						</v-layout>
 					<div class="wrapper">
 						<div class="realTime">{{post.data().realTime}}</div>
@@ -43,18 +43,27 @@ export default {
 	
 	},
 	methods: {
-		readData() {
-		db.collection("posts")
-    .get()
-    .then((querySnapshot) => {
+		watcher() {
+			db.collection("posts").onSnapshot((querySnapshot) => {
+        this.posts = [];
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            this.posts.unshift(doc);
+            this.posts.push(doc);
         });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });			
+    	});
+		},
+		readData() {
+			db.collection("posts")
+			.get()
+			.then((querySnapshot) => {
+					querySnapshot.forEach((doc) => {
+							// doc.data() is never undefined for query doc snapshots
+							this.posts.unshift(doc);
+					});
+			})
+			.catch(function(error) {
+					console.log("Error getting documents: ", error);
+			});	
+			this.watcher()		
 		},
 		deletePost(doc) {
 			if (confirm("Вы точно хотите удалить пост?"))
@@ -69,11 +78,9 @@ export default {
 
 			}	
 		},
-		showEditPost() {
-			eventBus.$emit('editPost')
-		},
-		changePost() {
-			eventBus.$emmit('changePost');
+		showEditPost(post) {
+			eventBus.$emit('editPost');
+			this.post = post.data()
 		}
 	},
 	created() {

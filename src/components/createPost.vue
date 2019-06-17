@@ -52,6 +52,7 @@
 				<v-checkbox
 					v-model="post.checkbox"
 					label="Пометить событие как важное"
+					color="#ff7eb5"
 				></v-checkbox>
 
 				<button class="btn4" @click.prevent="addData"> Создать</button>
